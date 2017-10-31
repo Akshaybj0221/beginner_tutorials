@@ -1,3 +1,17 @@
+/************************************************************
+ *                                                          *
+ * Copyright (C) 2017 by Akshay Bajaj                       *
+ *                                                          *
+ ***********************************************************/
+
+/**
+ *   @file	listener.cpp
+ *   @brief  	demo for ROS listener node
+ *
+ *   @author	Akshay Bajaj
+ *   @date	10/30/2017
+ */
+
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 
