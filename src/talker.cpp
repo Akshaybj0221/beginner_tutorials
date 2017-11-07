@@ -16,7 +16,7 @@
 #include "std_msgs/String.h"
 #include "beginner_tutorials/text.h"
 
-std::string var = "Anything base - ";
+std::string var = "Base String ";
 
 bool add(beginner_tutorials::text::Request  &req,
          beginner_tutorials::text::Response &res)
@@ -24,9 +24,7 @@ bool add(beginner_tutorials::text::Request  &req,
 
   var = req.a;
   res.word = var;
-//  ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
-//  ROS_INFO("sending back response: [%ld]", (long int)res.sum);
-  ROS_INFO("Message changes!");
+  ROS_INFO("String changes!");
   return true;
 }
 
@@ -35,13 +33,20 @@ int main(int argc, char **argv) {
 
   ros::init(argc, argv, "talker");
 
+  int freq = 10;
+
+  if(argc == 2) {
+	ROS_DEBUG_STREAM("Argument is" << argc[1]);
+	freq = atoi(argv[1]);
+  }
+
   ros::NodeHandle n;
 
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 
   ros::ServiceServer service = n.advertiseService("add_text", add);
 
-  ros::Rate loop_rate(10);
+  ros::Rate loop_rate(freq);
 
   int count = 0;
   while (ros::ok()) {
