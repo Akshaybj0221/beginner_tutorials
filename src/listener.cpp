@@ -5,11 +5,18 @@
  ***********************************************************/
 
 /**
- *   @file	listener.cpp
- *   @brief  	Demo for ROS listener node
+ *   @file	  listener.cpp
+ *   @author	  Akshay Bajaj
+ *   @copyright   MIT License
  *
- *   @author	Akshay Bajaj
- *   @date	10/30/2017
+ *   @brief  	  Demo for ROS listener node   
+ *   @date	  10/30/2017
+ *   @updateDate  11/06/2017
+ *
+ *   @section	  DESCRIPTION
+ *
+ *   This program is a part of the beginner tutorials in ROS
+ *   It defines the subscriber (listener node)
  */
 
 
