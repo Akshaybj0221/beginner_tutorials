@@ -54,6 +54,20 @@ int main(int argc, char **argv) {
 
  //   ros::ServiceServer service = n.advertiseService("add_two_ints", add);
 
+    ROS_DEBUG_STREAM( "Counted to " << count );
+    if (( count % 3) == 0) {
+	ROS_INFO_STREAM(count << " is  divisible by 3.");
+    }
+    if (( count % 5) == 0  ) {
+	 ROS_WARN_STREAM(count << " is  divisible by 5.");
+    }
+    if (( count % 10) == 0)  {
+	ROS_ERROR_STREAM(count << " is  divisible by 10.");
+    }
+    if (( count % 20) == 0)  {
+	ROS_FATAL_STREAM(count << " is  divisible by 20.");
+    }
+    
     ss << var << count;
    
     msg.data = ss.str();

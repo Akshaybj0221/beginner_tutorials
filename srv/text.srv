@@ -1,4 +1,4 @@
-#Request (Parameter for the service)
+#Request (Parameter of the service)
 string a
 ---
 #Response of service
