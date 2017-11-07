@@ -13,6 +13,7 @@ add_message_files(
 add_service_files(
   FILES
   AddTwoInts.srv
+  text.srv
 )
 
 ## Generate added messages and services

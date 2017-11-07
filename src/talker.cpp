@@ -14,15 +14,19 @@
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
-#include "beginner_tutorials/AddTwoInts.h"
+#include "beginner_tutorials/text.h"
 
-bool add(beginner_tutorials::AddTwoInts::Request  &req,
-         beginner_tutorials::AddTwoInts::Response &res)
+std::string var = "Anything base - ";
+
+bool add(beginner_tutorials::text::Request  &req,
+         beginner_tutorials::text::Response &res)
 {
-  res.word = "steing:";
-  
+
+  var = req.a;
+  res.word = var;
 //  ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
 //  ROS_INFO("sending back response: [%ld]", (long int)res.sum);
+  ROS_INFO("Message changes!");
   return true;
 }
 
@@ -35,7 +39,7 @@ int main(int argc, char **argv) {
 
   ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
 
-  ros::ServiceServer service = n.advertiseService("add_two_ints", add);
+  ros::ServiceServer service = n.advertiseService("add_text", add);
 
   ros::Rate loop_rate(10);
 
@@ -46,9 +50,11 @@ int main(int argc, char **argv) {
 
     std::stringstream ss;
 
-    beginner_tutorials::AddTwoInts srv;   
+ //   beginner_tutorials::AddTwoInts srv;   
 
-    ss << "Custom made hello world " << count << "response " << srv.response.word;
+ //   ros::ServiceServer service = n.advertiseService("add_two_ints", add);
+
+    ss << var << count;
    
     msg.data = ss.str();
 

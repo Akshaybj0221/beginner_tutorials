@@ -1,0 +1,5 @@
+#Request (Parameter for the service)
+string a
+---
+#Response of service
+string word
