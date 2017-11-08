@@ -1,4 +1,4 @@
-# Introduction to ROS: Beginner tutorials series
+# Introduction to ROS: Beginner Tutorials
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/Akshaybj0221/beginner_tutorials/blob/WEEK10_HW/LICENSE)
 
 This repository showcases the tutorials on ROS and is a part of ENPM808X course at University of Maryland.
