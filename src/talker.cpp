@@ -27,6 +27,16 @@
 // Initializing base string
 std::string var = "Base String ";
 
+
+/**
+ * @brief      add
+ *
+ * @param      req  The request of 'add_text' service
+ * @param      res  The response of 'add_text' service
+ *
+ * @return     boolean value of success
+ */
+
 bool add(beginner_tutorials::text::Request  &req,
          beginner_tutorials::text::Response &res)
 {
@@ -38,7 +48,18 @@ bool add(beginner_tutorials::text::Request  &req,
   return true;
 }
 
+/**
+ * This tutorial demonstrates simple sending of messages over the ROS system.
+ */
 
+/**
+ * @brief      main function
+ *
+ * @param[in]  argc  The argc
+ * @param      argv  The argv
+ *
+ * @return     nothing
+ */
 int main(int argc, char **argv) {
   /**
    * The ros::init() function needs to see argc and argv so that it can perform
@@ -52,7 +73,7 @@ int main(int argc, char **argv) {
    */
   ros::init(argc, argv, "talker");
 
-  // setting default frequency to 10
+  // setting default frequency to 10 (It can be changed using argument in launch file)
   int freq = 10;
 
   // Checking number of arguments
@@ -105,12 +126,8 @@ int main(int argc, char **argv) {
 
     std::stringstream ss;
 
- //   beginner_tutorials::AddTwoInts srv;   
-
- //   ros::ServiceServer service = n.advertiseService("add_two_ints", add);
-
     /**
-     * Adding a logic to switch the message logging from Info, Warn, error, and fatal.
+     * Adding a logic to switch the message logging from Info, Warn, error, and fatal, etc.
      */
     ROS_DEBUG_STREAM( "Counted to " << count );
     if (( count % 3) == 0) {
@@ -127,7 +144,7 @@ int main(int argc, char **argv) {
     }
     
     ss << var << count;
-   
+
     msg.data = ss.str();
 
     ROS_INFO("%s", msg.data.c_str());
