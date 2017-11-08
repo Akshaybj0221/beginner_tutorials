@@ -1,6 +1,7 @@
 <launch>
+
     <env name="ROSCONSOLE_CONFIG_FILE"
-    value="$(find beginner_tutorials)/config/default_console.conf"/>
+    	value="$(find beginner_tutorials)/config/default_console.conf"/>
 
     <arg name="freq" default="10"/>
 
