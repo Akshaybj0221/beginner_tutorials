@@ -37,14 +37,15 @@ std::string var = "Base String ";
  * @return     boolean value of success
  */
 
-bool add(beginner_tutorials::text::Request  &req,
-         beginner_tutorials::text::Response &res)
+bool add(beginner_tutorials::text::Request& req,
+         beginner_tutorials::text::Response& res)
 {
 
   var = req.a;
   res.word = var;
   // Print message notifying change in the string on service call
   ROS_INFO("String changes!");
+
   return true;
 }
 
@@ -77,9 +78,9 @@ int main(int argc, char **argv) {
   int freq = 10;
 
   // Checking number of arguments
-  if(argc == 2) {
+  if(argc > 1) {
         // Changing the frequency to the argument value
-	ROS_DEBUG_STREAM("Argument is" << argc[1]);
+	ROS_DEBUG_STREAM("Argument is" << argc);
 	freq = atoi(argv[1]);
   }
 
@@ -130,6 +131,7 @@ int main(int argc, char **argv) {
      * Adding a logic to switch the message logging from Info, Warn, error, and fatal, etc.
      */
     ROS_DEBUG_STREAM( "Counted to " << count );
+
     if (( count % 3) == 0) {
 	ROS_INFO_STREAM(count << " is  divisible by 3.");
     }
