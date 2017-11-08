@@ -21,11 +21,31 @@
 
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "beginner_tutorials/text.h"
 
+
+/**
+ * This demonstrates message reception on ROS.
+ */
+
+/**
+ * @brief      Callback on the chatter topic
+ *
+ * @param[in]  msg   The message
+ */
 void chatterCallback(const std_msgs::String::ConstPtr& msg) {
   ROS_INFO("I heard: [%s]", msg->data.c_str());
 }
 
+
+/**
+ * @brief      main function
+ *
+ * @param[in]  argc  The argc
+ * @param      argv  The argv
+ *
+ * @return     nothing
+ */
 int main(int argc, char **argv) {
 
   /**
