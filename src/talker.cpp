@@ -30,7 +30,7 @@ std::string var = "Base String ";
 
 /**
  * @brief      add
- *
+
  * @param      req  The request of 'add_text' service
  * @param      res  The response of 'add_text' service
  *
@@ -38,14 +38,11 @@ std::string var = "Base String ";
  */
 
 bool add(beginner_tutorials::text::Request& req,
-         beginner_tutorials::text::Response& res)
-{
-
+         beginner_tutorials::text::Response& res) {
   var = req.a;
   res.word = var;
   // Print message notifying change in the string on service call
   ROS_INFO("String changes!");
-
   return true;
 }
 
@@ -61,7 +58,7 @@ bool add(beginner_tutorials::text::Request& req,
  *
  * @return     nothing
  */
-int main(int argc, char **argv) {
+int main (int argc, char **argv) {
   /**
    * The ros::init() function needs to see argc and argv so that it can perform
    * any ROS arguments and name remapping that were provided at the command line.
@@ -72,16 +69,17 @@ int main(int argc, char **argv) {
    * You must call one of the versions of ros::init() before using any other
    * part of the ROS system.
    */
-  ros::init(argc, argv, "talker");
+  ros::init (argc, argv, "talker");
 
-  // setting default frequency to 10 (It can be changed using argument in launch file)
+  // setting default frequency to 10 
+  //(It can be changed using argument in launch file)
   int freq = 10;
 
   // Checking number of arguments
-  if(argc > 1) {
-        // Changing the frequency to the argument value
-	ROS_DEBUG_STREAM("Argument is" << argc);
-	freq = atoi(argv[1]);
+  if (argc > 1) {
+    // Changing the frequency to the argument value
+    ROS_DEBUG_STREAM("Argument is" << argc);
+    freq = atoi(argv[1]);
   }
 
   /**
@@ -130,25 +128,22 @@ int main(int argc, char **argv) {
     /**
      * Adding a logic to switch the message logging from Info, Warn, error, and fatal, etc.
      */
-    ROS_DEBUG_STREAM( "Counted to " << count );
+    ROS_DEBUG_STREAM("Counted to " << count);
 
-    if (( count % 3) == 0) {
-	ROS_INFO_STREAM(count << " is  divisible by 3.");
+    if ((count % 3) == 0) {
+      ROS_INFO_STREAM(count << " is  divisible by 3.");
     }
-    if (( count % 5) == 0  ) {
-	 ROS_WARN_STREAM(count << " is  divisible by 5.");
+    if ((count % 5) == 0) {
+      ROS_WARN_STREAM(count << " is  divisible by 5.");
     }
-    if (( count % 10) == 0)  {
-	ROS_ERROR_STREAM(count << " is  divisible by 10.");
+    if ((count % 10) == 0) {
+      ROS_ERROR_STREAM(count << " is  divisible by 10.");
     }
-    if (( count % 20) == 0)  {
-	ROS_FATAL_STREAM(count << " is  divisible by 20.");
+    if ((count % 20) == 0) {
+      ROS_FATAL_STREAM(count << " is  divisible by 20.");
     }
-    
     ss << var << count;
-
     msg.data = ss.str();
-
     ROS_INFO("%s", msg.data.c_str());
 
     /**
