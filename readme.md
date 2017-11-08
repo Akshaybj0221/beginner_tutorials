@@ -106,13 +106,13 @@ Logger GUI can be used to check the logged messages. To launch logger GUI, run t
 ```
 
 
-###Miscellaneous Instructions
+### Miscellaneous Instructions
 
-cpplint and cppcheck output files are added in the *results* folder.
+1. cpplint and cppcheck output files are added in the *results* folder.
 
-screenshots are added in the *output* folder.
+2. screenshots are added in the *output* folder.
 
-*msg* folder is to be ignored as it has nothing relevant to the project.
+3. *msg* folder is to be ignored as it has nothing relevant to the project.
 
-*config* folder contains the custom log file.
+4. *config* folder contains the custom log file.
 
