@@ -21,9 +21,11 @@ TEST(testTf, tfWorking) {
    tf::StampedTransform transform;
 
    try {
-      EXPECT_NO_FATAL_FAILURE(listener.waitForTransform("/world", "/talk", ros::Time(0), ros::Duration(0.5)));
+      EXPECT_NO_FATAL_FAILURE(tflistener.waitForTransform("/world", "/talk", ros::Time(0), ros::Duration(0.5)));
 
-      EXPECT_NO_FATAL_FAILURE(listener.lookupTransform("/world", "/talk", ros::Time(0), transform));
-}
+      EXPECT_NO_FATAL_FAILURE(tflistener.lookupTransform("/world", "/talk", ros::Time(0), transform));
+} catch (tf::TransformException ex) {
+      ADD_FAILURE(); 
+   } 
 }
 
