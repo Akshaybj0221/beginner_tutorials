@@ -4,9 +4,12 @@
     	value="$(find beginner_tutorials)/config/default_console.conf"/>
 
     <arg name="freq" default="10"/>
-
+    <arg name="record" default="false"/>
+ 
     <node pkg="beginner_tutorials" name="talker" type="talker" output="screen" args="$(arg freq)" />
     
     <node pkg="beginner_tutorials" name="listener" type="listener" output="screen" launch-prefix="gnome-terminal --command"/>
+
+    <node name="recorder" pkg="rosbag" type="record" args="--duration=20.0 -a -O $(find beginner_tutorials)/result/recTalker.bag if="$(arg record)"/>
 
 </launch>
