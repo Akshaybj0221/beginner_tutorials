@@ -1,9 +1,9 @@
-viki@ubuntu:~/catkin_ws/src/beginner_tutorials$ cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" ) talker.cpp
-./src/talker.cpp:40:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::text::Request& req  [runtime/references] [2]
-./src/talker.cpp:41:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::text::Response& res  [runtime/references] [2]
-
+viki@ubuntu:~/catkin_ws/src/beginner_tutorials$ cpplint $( find . -name \*.hpp -or -name \*.cpp | grep -vE -e "^./build/" -e "^./vendor/" -e "^./docs/" -e "^./results" )
+./src/talker.cpp:56:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::text::Request& req  [runtime/references] [2]
+./src/talker.cpp:57:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::text::Response& res  [runtime/references] [2]
 Done processing ./src/talker.cpp
 Done processing ./src/listener.cpp
-Skipping input 'talker.cpp': Can't open for reading
+Done processing ./test/main.cpp
+Done processing ./test/talkerTest.cpp
 Total errors found: 2
 

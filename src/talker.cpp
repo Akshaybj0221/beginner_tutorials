@@ -27,20 +27,18 @@
  *   @copyright   MIT License
  *
  *   @brief  	  Demo for ROS talker node   
- *   @date	  10/30/2017
- *   @updateDate  11/06/2017
- *
+ *   @date	  11/14/2017
+
  *   @section	  DESCRIPTION
  *
  *   This program is a part of the beginner tutorials in ROS which defines the publisher (talker node)
  */
 
+#include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include <tf/transform_broadcaster.h>
-#include <sstream>
 #include "beginner_tutorials/text.h"
-
 
 // Initializing base string
 std::string var = "Base String ";
@@ -95,16 +93,15 @@ int main(int argc, char **argv) {
   // Initializing an object for tranform frame
   tf::Transform transform;
 
-
-  // setting default frequency to 10 
+  // setting default frequency to 10
   // (It can be changed using argument in launch file)
   int freq = 10;
 
   // Checking number of arguments
   if (argc > 1) {
     // Changing the frequency to the argument value
-    ROS_DEBUG_STREAM("Argument is" << argc);
-    freq = atoi(argv[1]);
+  ROS_DEBUG_STREAM("Argument is" << argc);
+  freq = atoi(argv[1]);
   }
 
   /**
@@ -163,13 +160,16 @@ int main(int argc, char **argv) {
     chatter_pub.publish(msg);
 
     // Setting the origin of the transform
-    transform.setOrigin(tf::Vector3(0.1 * count, 0.1 * count, 0.1 * count));
+    transform.setOrigin(tf::Vector3
+(0.1 * count, 0.1 * count, 0.1 * count));
 
     // Setting the orientation of the transform
-    transform.setRotation(tf::Quaternion(0.2 * count, 0.2 * count, 0.1 * count, 1));
+    transform.setRotation(tf::Quaternion
+(0.2 * count, 0.2 * count, 0.1 * count, 1));
 
     // Broadcasting the final transform
-    tfb.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
+    tfb.sendTransform(tf::StampedTransform
+(transform, ros::Time::now(), "world", "talk"));
 
     ros::spinOnce();
 
