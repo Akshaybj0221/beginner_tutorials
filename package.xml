@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package>
+<package format="2">
   <name>beginner_tutorials</name>
   <version>1.0.0</version>
   <description>The beginner_tutorials package</description>
@@ -31,7 +31,12 @@
   <!-- The *_depend tags are used to specify dependencies -->
   <!-- Dependencies can be catkin packages or system dependencies -->
   <!-- Examples: -->
-  <!-- Use build_depend for packages you need at compile time: -->
+ 
+  <!-- Use test_depend for packages you need only for testing: -->
+  <test_depend>gtest</test_depend>
+  <test_depend>rostest</test_depend>
+
+ <!-- Use build_depend for packages you need at compile time: -->
   <build_depend>message_generation</build_depend>
   <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
@@ -43,24 +48,18 @@
   <build_export_depend>std_msgs</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
   <build_export_depend>tf</build_export_depend>
-  <build_export_depend>rostest</build_export_depend>
 
 
   <!-- Use buildtool_depend for build tool packages: -->
   <buildtool_depend>catkin</buildtool_depend> -->
 
   <!-- Use run_depend for packages you need at runtime: -->
-  <run_depend>message_runtime</run_depend>
-
-  <!-- Use test_depend for packages you need only for testing: -->
-  <test_depend>gtest</test_depend>
-  <test_depend>rostest</test_depend>
-
-
-  <run_depend>roscpp</run_depend>
-  <run_depend>rospy</run_depend>
-  <run_depend>tf</run_depend>
-  <run_depend>rostest</run_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>tf</exec_depend>
+  <exec_depend>rostest</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>

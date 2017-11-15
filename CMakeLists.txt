@@ -45,6 +45,7 @@ if(CATKIN_ENABLE_TESTING)
       talkerTest
       test/main.cpp
       test/talkerTest.cpp
+      launch/talkerTest.launch
    )
 
    target_link_libraries(
