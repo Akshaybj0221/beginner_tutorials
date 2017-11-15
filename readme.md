@@ -105,6 +105,96 @@ Logger GUI can be used to check the logged messages. To launch logger GUI, run t
 <home>$ rosrun rqt_console rqt_console
 ```
 
+## TF transform 
+TF transforms are the way to define coordinate transforms between various frames. The talker node now publishes a non-zero transformation between `world` and `talk` frames. The easiest to check if the transforms are being broadcasted between the two frames is using `tf_echo`. To see the transforms between all the frames and how they are connected, one can use `view_frames` or `rqt_tf_tree`. 
+
+Ensure that `talker_node` is already running. It can be run using the instructions given in the earlier sections. Now to see the transform being broadcasted, execute the following command:
+```
+<home>$ rosrun tf tf_echo /world /talk
+``` 
+
+Here, the first frame is the parent frame while the second frame is the child frame.  The output after executing the above command looks like below:
+``` 
+At time 1510737450.842
+- Translation: [35.200, 35.200, 35.200]
+- Rotation: in Quaternion [0.667, 0.667, 0.333, 0.009]
+            in RPY (radian) [2.610, -0.446, 1.694]
+            in RPY (degree) [149.556, -25.581, 97.070]
+At time 1510737451.542
+- Translation: [35.900, 35.900, 35.900]
+- Rotation: in Quaternion [0.667, 0.667, 0.333, 0.009]
+            in RPY (radian) [2.610, -0.447, 1.694]
+            in RPY (degree) [149.570, -25.596, 97.071]
+At time 1510737452.543
+- Translation: [36.900, 36.900, 36.900]
+- Rotation: in Quaternion [0.667, 0.667, 0.333, 0.009]
+            in RPY (radian) [2.611, -0.447, 1.694]
+            in RPY (degree) [149.588, -25.618, 97.072]
+
+```
+
+To generate a PDF containing the connections between reference frame to the other frame, type the command below:
+```
+<home>$ rosrun rqt_tf_tree rqt_tf_tree
+```
+
+Or use following,
+```
+<home>$ rosrun tf view_frames
+```
+
+## Testing using rostest/gtest 
+Integration testing is very important to ensure that the newly created or modified modules does not break the running version of the code. This module has two unit tests which ensure that `add_text` service is running and that the transform being broadcasted is as expected. 
+
+There are two ways to run the tests viz. using `catkin_make` and `rostest`. Before running the tests, ensure that `catkin_make` is invoked to build the units that are not being tested. The tests can be run using either of the following commands:
+
+#### Using catkin_make 
+```
+<home>$ cd <path to directory>/catkin_ws
+<workspace>$ catkin_make run_tests_beginner_tutorials
+```
+
+#### Using rostest
+```
+<home>$ rostest beginner_tutorials talkertest.launch
+```
+
+## Recording/Playing rosbag
+`rosbag` allows to record all the data that is being published across all the nodes. Bag files are very useful when one wants to debug what is happening on the robot. However, rosbag does not record calls to services as well as responses of the services. It can be recorded from the commandline using `rosbag record -a`. And the recorded bag file can be played using `rosbag play <path to bag file>`. 
+
+One can check the information of the bag file using `rosbag info <filename>` command. Sample output looks like below:
+```
+viki@ubuntu:~/catkin_ws/src/beginner_tutorials$ rosbag info results/recTalker.bag 
+path:        results/recTalker.bag
+version:     2.0
+duration:    19.9s
+start:       Nov 14 2017 23:11:43.20 (1510729903.20)
+end:         Nov 14 2017 23:12:03.11 (1510729923.11)
+size:        269.0 KB
+messages:    1307
+compression: none [1/1 chunks]
+types:       rosgraph_msgs/Log  [acffd30cd6b6de30f120938c17c593fb]
+             std_msgs/String    [992ce8a1687cec8c8bd883ec73ca41d1]
+             tf2_msgs/TFMessage [94810edda583a504dfda3829e70d7eec]
+topics:      /chatter      188 msgs    : std_msgs/String   
+             /rosout       464 msgs    : rosgraph_msgs/Log  (3 connections)
+             /rosout_agg   467 msgs    : rosgraph_msgs/Log 
+             /tf           188 msgs    : tf2_msgs/TFMessage
+
+```
+
+`add_text` launch file of this package accepts a flag `record` that can be used to record the bag file which will record all the data that is being published on the `chatter` topic. It will save the file in `results` directory. This can be done using following commands:
+```
+<home>$ roslaunch beginner_tutorials add_text record:=true
+```
+
+Before proceeding to play the bag file, ensure that subscriber node is running as per the instructions given the earlier sections. To see the data stored in the bag file recorded using the above command:
+```
+<home>$ cd catkin_ws/src/beginner_tutorials/results
+<results>$ rosbag play publisher.bag
+```
+
+This command will start playing the recorded bag file and the subscriber node which was running previously will be able to listen to the data that is being published. One can check the transform being broadcasted using the instructions given before. 
 
 ### Miscellaneous Instructions
 
