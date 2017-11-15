@@ -10,6 +10,6 @@
     
     <node pkg="beginner_tutorials" name="listener" type="listener" output="screen" launch-prefix="gnome-terminal --command"/>
 
-    <node name="recorder" pkg="rosbag" type="record" args="--duration=20.0 -a -O $(find beginner_tutorials)/result/recTalker.bag if="$(arg record)"/>
+    <node name="recorder" pkg="rosbag" type="record" args="--duration=20.0 -a -O $(find beginner_tutorials)/results/recTalker.bag" if="$(arg record)"/>
 
 </launch>
