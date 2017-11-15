@@ -163,6 +163,15 @@ int main(int argc, char **argv) {
      */
     chatter_pub.publish(msg);
 
+    // Setting the origin of the transform
+    transform.setOrigin(tf::Vector3(0.1 * count, 0.1 * count, 0.1 * count));
+
+    // Setting the orientation of the transform
+    transform.setRotation(tf::Quaternion(0.2 * count, 0.2 * count, 0.1 * count, 1));
+
+    // Broadcasting the final transform
+    tfb.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
+
     ros::spinOnce();
 
     loop_rate.sleep();
