@@ -20,10 +20,7 @@ add_service_files(
 generate_messages(DEPENDENCIES std_msgs)
 
 ## Declare a catkin package
-##catkin_package(
-##  ...
-##  CATKIN_DEPENDS message_runtime ...
-##  ...)
+catkin_package()
 
 ## Build talker and listener
 include_directories(include ${catkin_INCLUDE_DIRS})
@@ -35,4 +32,28 @@ add_dependencies(talker beginner_tutorials_generate_messages_cpp)
 add_executable(listener src/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
 add_dependencies(listener beginner_tutorials_generate_messages_cpp)
+
+## Test build
+if(CATKIN_ENABLE_TESTING)
+   find_package(rostest REQUIRED)
+
+   add_rostest_gtest(
+      talkerTest
+      test/main.cpp
+      test/talkerTest.cpp
+   )
+
+   target_link_libraries(
+      talkerTest
+      ${catkin_LIBRARIES}
+   )
+
+   add_dependencies(
+      talkerTest
+      talker
+      listener
+      ${PROJECT_NAME}_generated_messages_cpp
+      ${catkin_EXPORTED_TARGETS}
+   )
+endif()
 
