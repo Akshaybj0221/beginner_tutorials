@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(beginner_tutorials)
 
+## C++11 Compiler usage added
+add_compile_options(-std=c++11)
+
+
 ## Find catkin and any catkin packages
 find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs genmsg message_generation tf)
 
@@ -51,7 +55,6 @@ if(CATKIN_ENABLE_TESTING)
    add_dependencies(
       talkerTest
       talker
-      listener
       ${PROJECT_NAME}_generated_messages_cpp
       ${catkin_EXPORTED_TARGETS}
    )
