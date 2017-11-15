@@ -1,8 +1,25 @@
-/************************************************************
- *                                                          *
- * Copyright (C) 2017 by Akshay Bajaj                       *
- *                                                          *
- ***********************************************************/
+/**********************************************************************************
+ *                                                          			  *
+ * Copyright (C) 2017 by Akshay Bajaj                       			  *
+ *										  *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy   *
+ * of this software and associated documentation files (the "Software"), to deal  *
+ * in the Software without restriction, including without limitation the rights   *
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell	  *
+ * copies of the Software, and to permit persons to whom the Software is	  *
+ * furnished to do so, subject to the following conditions:			  *
+ *										  *
+ * The above copyright notice and this permission notice shall be included in	  *
+ * all copies or substantial portions of the Software.				  *
+ *										  *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR	  *
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,	  *
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE	  *
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER	  *
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,  *
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE  *
+ * SOFTWARE.                                                         		  *
+ *********************************************************************************/
 
 /**
  *   @file	  talker.cpp
@@ -78,7 +95,6 @@ int main(int argc, char **argv) {
   // Initializing an object for tranform frame
   tf::Transform transform;
 
-  // In
 
   // setting default frequency to 10 
   // (It can be changed using argument in launch file)
@@ -125,7 +141,7 @@ int main(int argc, char **argv) {
    * A count of how many messages we have sent. This is used to create
    * a unique string for each message.
    */
-  int count = 0;
+  auto count = 0;
   while (ros::ok()) {
     /**
      * This is a message object. You stuff it with data, and then publish it.
